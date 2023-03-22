@@ -22,18 +22,19 @@ function SignUp() {
       firstName !== "" &&
       lastName !== ""
     ) {
-      document.getElementById("verify").style.display = "flex";
-      setTimeout(() => {
-        navigate("/otpinput");
-      }, 3000);
+      navigate("/otpinput");
+      // document.getElementById("verify").style.display = "flex";
+      // setTimeout(() => {
+      //   navigate("/otpinput");
+      // }, 3000);
     } else {
       if (firstName === "") {
         firstNameRef.current.focus();
-      } else if (lastName !== "") {
+      } else if (lastName === "") {
         lastNameRef.current.focus();
-      } else if (email !== "") {
+      } else if (email === "") {
         emailRef.current.focus();
-      } else if (password !== "") {
+      } else if (password === "") {
         passwordRef.current.focus();
       }
     }

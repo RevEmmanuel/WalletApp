@@ -8,10 +8,16 @@ function CompleteReg() {
   const [address, setAddress] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvv, setCvv] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState("");
   const addressRef = useRef();
   const cvvRef = useRef();
   const cardNumberRef = useRef();
+  const monthRef = useRef();
   const navigate = useNavigate();
+
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
 
   const handleCardNumberChange = (event) => {
     let value = event.target.value;
@@ -26,6 +32,10 @@ function CompleteReg() {
     setCardNumber(value);
   };
 
+  const handleMonthChange = (event) => {
+    setSelectedMonth(event.target.value);
+  };
+
   const handleCvvChange = (event) => {
     let value = event.target.value;
     value = value.slice(0, 3);
@@ -34,16 +44,23 @@ function CompleteReg() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (address !== "" && cardNumber !== "" && cvv !== "") {
-      navigate("/otpinput");
+    // event.preventDefault();
+    if (
+      address !== "" &&
+      cardNumber !== "" &&
+      cvv !== "" &&
+      selectedMonth !== ""
+    ) {
+      navigate("/completereg2");
     } else {
       if (address === "") {
         addressRef.current.focus();
-      } else if (cvv !== "") {
-        cvv.current.focus();
-      } else if (cardNumber !== "") {
+      } else if (cardNumber === "") {
         cardNumberRef.current.focus();
+      } else if (selectedMonth === "") {
+        monthRef.current.focus();
+      } else if (cvv === "") {
+        cvvRef.current.focus();
       }
     }
   };
@@ -75,7 +92,7 @@ function CompleteReg() {
               className="input"
               name="address"
               value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              onChange={handleAddressChange}
               ref={addressRef}
               required
             />
@@ -92,7 +109,7 @@ function CompleteReg() {
               name="cardnumber"
               value={cardNumber}
               onChange={handleCardNumberChange}
-              ref={addressRef}
+              ref={cardNumberRef}
               required
             />
             <input
@@ -100,9 +117,9 @@ function CompleteReg() {
               placeholder="Expiry date"
               className="input"
               name="expiry"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              ref={addressRef}
+              value={selectedMonth}
+              onChange={handleMonthChange}
+              ref={monthRef}
               required
             />
             <input
@@ -112,7 +129,7 @@ function CompleteReg() {
               name="cvv"
               value={cvv}
               onChange={handleCvvChange}
-              ref={addressRef}
+              ref={cvvRef}
               required
             />
           </div>

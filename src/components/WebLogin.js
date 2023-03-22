@@ -13,7 +13,7 @@ function WebLogin() {
   const navigate = useNavigate();
   function handleClick(event) {
     if (email !== "" && password !== "") {
-      navigate("/signup");
+      navigate("/dashboard");
     } else {
       event.preventDefault();
       if (email === "") {

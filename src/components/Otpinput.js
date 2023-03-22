@@ -30,10 +30,11 @@ function OTPInput() {
       !isEmpt(otp3) &&
       !isEmpt(otp4)
     ) {
-      document.getElementById("verify").style.display = "flex";
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
+      navigate("/completereg");
+      // document.getElementById("verify").style.display = "flex";
+      // setTimeout(() => {
+      //   navigate("/completereg");
+      // }, 3000);
     } else {
       if (isNaN(otp1)) {
         otp1Ref.current.focus();

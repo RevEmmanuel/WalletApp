@@ -5,103 +5,127 @@ import "../components/styles/style.css";
 
 function CompleteReg2() {
   const imgsrc = "/walletimages/completeReg.png";
-  const [address, setAddress] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [cvv, setCvv] = useState("");
-  const addressRef = useRef();
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [relationship, setRelationship] = useState("");
+  const [bvn, setBvn] = useState("");
+  const fullNameRef = useRef();
+  const emailRef = useRef();
+  const phoneRef = useRef();
+  const relationshipRef = useRef();
+  const bvnRef = useRef();
   const navigate = useNavigate();
 
-  const handleCardNumberChange = (event) => {
+  const handlePhoneNumberChange = (event) => {
     let value = event.target.value;
-    // Remove any non-numeric characters
-    value = value.replace(/\D/g, "");
-    value = value.slice(0, 16);
-    // Add space after every 4 digits
-    value = value.replace(/(.{4})/g, "$1 ");
-    // Remove any extra space at the end
-    value = value.trim();
-    // Set the state with the updated value
-    setCardNumber(value);
+    setPhoneNumber(value);
   };
 
-  const handleCvvChange = (event) => {
+  const handleBvnChange = (event) => {
     let value = event.target.value;
-    value = value.slice(0, 3);
+    value = value.replace(/\D/g, "");
+    value = value.trim();
+    value = value.slice(0, 10);
     // Set the state with the updated value
-    setCvv(value);
+    setBvn(value);
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
+    // event.preventDefault();
+    if (
+      fullName !== "" &&
+      email !== "" &&
+      phoneNumber !== "" &&
+      relationship !== "" &&
+      bvn !== ""
+    ) {
+      navigate("/");
+    } else {
+      if (fullName === "") {
+        fullNameRef.current.focus();
+      } else if (email === "") {
+        emailRef.current.focus();
+      } else if (phoneNumber === "") {
+        phoneRef.current.focus();
+      } else if (relationship === "") {
+        relationshipRef.current.focus();
+      } else if (bvn === "") {
+        bvnRef.current.focus();
+      }
+    }
   };
 
   return (
     <DefaultPage imageSource={`${imgsrc}`} imageName="Tick boxes">
       <div className="half_two_inner">
         <nav>
-          <div className="count">1 of 3</div>
+          <div className="count">2 of 3</div>
           <div>Kindly complete your registration</div>
         </nav>
         <hr className="thin-line" />
         <form>
           <div className="kyc">
             <p>
-              <strong>KYC</strong>
+              <strong>Next of kin</strong>
             </p>
-
-            <label for="identify">Select a form of identification:</label>
-            <br />
-            <select id="dropdown" name="identify">
-              <option value="NIN">NIN</option>
-              <option value="License">DRIVER'S License</option>
-              <option value="PVC">VOTER'S CARD</option>
-            </select>
             <input
               type="text"
-              placeholder="Home Address"
+              placeholder="Full name"
               className="input"
               name="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              ref={addressRef}
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              ref={fullNameRef}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="input"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              ref={emailRef}
+              required
+            />
+            <input
+              type="tel"
+              placeholder="Phone number"
+              className="input"
+              name="phone"
+              value={phoneNumber}
+              onChange={handlePhoneNumberChange}
+              ref={phoneRef}
+              required
+              pattern="[0-9]{11}"
+            />
+            <input
+              type="text"
+              placeholder="Relationship"
+              className="input"
+              name="relationship"
+              value={relationship}
+              onChange={(e) => setRelationship(e.target.value)}
+              ref={relationshipRef}
               required
             />
           </div>
           <hr className="thin-line" />
           <div className="kyc">
             <div className="below_nav">
-              <strong>Add Cards</strong>
+              <strong>BVN</strong>
             </div>
             <input
               type="text"
-              placeholder="Card Number"
+              placeholder="BVN"
               className="input"
-              name="cardnumber"
-              value={cardNumber}
-              onChange={handleCardNumberChange}
-              ref={addressRef}
+              name="bvn"
+              value={bvn}
+              onChange={handleBvnChange}
+              ref={bvnRef}
               required
-            />
-            <input
-              type="month"
-              placeholder="Expiry date"
-              className="input"
-              name="expiry"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              ref={addressRef}
-              required
-            />
-            <input
-              type="password"
-              placeholder="CVV"
-              className="input"
-              name="cvv"
-              value={cvv}
-              onChange={handleCvvChange}
-              ref={addressRef}
-              required
+              pattern="[0-9]{10}"
             />
           </div>
           <button
