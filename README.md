@@ -13,8 +13,8 @@ To clone project
 git clone https://github.com/RevEmmanuel/WalletApp.git
 ```
 
-Front-end project
-* [Wallet App Front-end](https://github.com/RevEmmanuel/DjangoWalletApp)
+Backend project
+* [Wallet App Backend](https://github.com/RevEmmanuel/DjangoWalletApp)
 
 
 
