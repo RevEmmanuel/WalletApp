@@ -1,3 +1,32 @@
+# Django Wallet Application
+This is the frontend for a Django web application that helps users to manage their monetary and financial needs.
+
+Technologies used:
+* `React`
+* `Javascript`
+
+[![My Skills](https://skillicons.dev/icons?i=react,javascript)](https://skillicons.dev)
+
+## Important links
+To clone project
+```
+git clone https://github.com/RevEmmanuel/WalletApp.git
+```
+
+Front-end project
+* [Wallet App Front-end](https://github.com/RevEmmanuel/DjangoWalletApp)
+
+
+
+## Developer & Engineer
+Adeola Adekunle
+* [GitHub (RevEmmanuel)](https://github.com/RevEmmanuel)
+* [Twitter (@Adeola_Ade1)](https://twitter.com/Adeola_Ade1)
+* [Instagram (@deolaaxo)](https://www.instagram.com/deolaaxo/)
+* [LinkedIn (Adeola Adekunle)](https://www.linkedin.com/in/adeola-emmanuel-adekunle)
+* [Email(Adeola Adekunle)](mailto:adeolaae1@gmail.com)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
